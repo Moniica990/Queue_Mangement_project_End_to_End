@@ -1,0 +1,315 @@
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+  --bg:           #0f1117;
+  --surface:      #1a1d26;
+  --surface-2:    #11131a;
+  --border:       #333;
+
+  --text:         #ffffff;
+  --text-soft:    #aaaaaa;
+
+  --accent:       #6c63ff;
+  --accent-hover: #5848e5;
+
+  --warning:    #f0a500;
+  --success:    #2ecc71;
+  --info:       #3498db;
+
+  --warning-bg: rgba(240,165,0,0.15);
+  --success-bg: rgba(46,204,113,0.15);
+  --info-bg:    rgba(52,152,219,0.15);
+
+  --radius:    12px;
+  --radius-sm: 6px;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── App layout ────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+header p {
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+/* ── Main layout ───────────────────────────────────────── */
+main {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  main { flex-direction: column; }
+}
+
+/* ── Queue Form ────────────────────────────────────────── */
+.queue-form {
+  background: var(--surface);
+  padding: 25px;
+  border-radius: var(--radius);
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+
+.queue-form h2 {
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+input::placeholder {
+  color: var(--text-soft);
+}
+
+/* ── Buttons (base) ────────────────────────────────────── */
+button {
+  width: 100%;
+  padding: 10px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+/* ── Queue Display ─────────────────────────────────────── */
+.queue-display {
+  flex: 1;
+  background: var(--surface);
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.queue-display h2 {
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.empty-queue {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 14px;
+  padding: 40px 0;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Queue Item ────────────────────────────────────────── */
+.queue-item {
+  background: var(--surface-2);
+  padding: 15px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.2s;
+}
+
+.queue-item:hover {
+  border-color: var(--accent);
+}
+
+.customer-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.customer-info p {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 3px;
+}
+
+/* ── Status Badge ──────────────────────────────────────── */
+.status-badge {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.status-badge.Waiting   { background: var(--warning-bg); color: var(--warning); }
+.status-badge.Serving   { background: var(--success-bg); color: var(--success); }
+.status-badge.Completed { background: var(--info-bg);    color: var(--info);    }
+
+/* ── Item Action Buttons ───────────────────────────────── */
+.item-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-status {
+  width: auto;
+  padding: 5px 12px;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-status:hover {
+  background: rgba(108,99,255,0.15);
+}
+
+.btn-remove {
+  width: auto;
+  padding: 5px 10px;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-remove:hover {
+  background: rgba(255,77,77,0.15);
+}
+
+
+.queue-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d1321;
+  border: 1px solid #2a2f45;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 15px;
+}
+
+.customer-info h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.customer-info p {
+  margin: 4px 0;
+  color: #b0b3c6;
+}
+
+.customer-info span {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ACTION BUTTONS CONTAINER */
+.actions {
+  display: flex;
+  gap: 10px; /* clean spacing */
+}
+
+/* BASE BUTTON STYLE */
+.actions button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* SPECIFIC BUTTONS */
+.serve-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.serve-btn:hover {
+  background-color: #27ae60;
+}
+
+.complete-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.complete-btn:hover {
+  background-color: #2c80b4;
+}
+
+.remove-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+}
