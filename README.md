@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+the working of the application is 
+https://queue-mangement-project-end-to-end.vercel.app/
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
